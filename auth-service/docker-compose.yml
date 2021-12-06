@@ -1,0 +1,21 @@
+version: '3'
+services:
+  myapp:
+    restart: always
+    build: .
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/usr/src/app
+    depends_on:
+      - mongoapp
+  mongoapp:
+    image: mongo:latest
+    ports:
+      - '27017:27017'
+    volumes:
+      - data:/data/db
+
+volumes:
+  data:
+    
